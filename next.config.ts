@@ -195,23 +195,6 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
   },
-  
-  // Configurações adicionais para resolver problemas de HMR e fetch
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      // Resolver problemas de fetch no client-side
-      config.resolve.fallback = {
-        ...config.resolve.fallback,
-        fs: false,
-        net: false,
-        tls: false,
-      };
-    }
-    return config;
-  },
-  
-  // Desabilitar strict mode temporariamente para evitar double-renders que causam abort signals
-  reactStrictMode: false,
 };
 
 export default nextConfig;
